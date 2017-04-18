@@ -1,0 +1,61 @@
+.jnq-alert {
+  z-index: 999;
+  position: fixed;
+  background: #fff;
+  top: 40%;
+  left: 40%;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 3px 20px rgba(0, 0, 0, 0.9);
+}
+.jnq-alert-h {
+  width: 100%;
+  height: 32px;
+  background: #1b6aaa;
+  position: relative;
+  left: 0;
+  top: 0;
+}
+.jnq-alert-h h3 {
+  width: 100%;
+  height: 100%;
+  color: #fff;
+  line-height: 32px;
+  text-align: left;
+  padding-left: 10px;
+  cursor: move;
+  font-size: 20px;
+}
+.jnq-alert-h button {
+  width: 32px;
+  height: 32px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  border: none;
+  background-color: #1b6aaa;
+  color: #fff;
+  z-index: 2;
+  cursor: pointer;
+}
+.jnq-alert-c {
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+}
+.jnq-alert-c .jnq-alert-message {
+  height: 52px;
+  line-height: 52px;
+}
+.jnq-alert-f {
+  width: 100%;
+}
+.jnq-alert-f button {
+  padding: 6px 12px;
+  margin: 4px 20px;
+  border: none;
+  color: #fff;
+  border-radius: 2px;
+  background: #1b6aaa;
+  font-size: 12px;
+}
