@@ -5,19 +5,19 @@
 		<span>当前第 {{currentPage}} 页</span>
 		<span>|</span>
 		<span>每页</span>
-		<input class="input" type="text" :value="currentPageSize"/>
+		<input class="input" type="text" v-model="currentPageSize" @blur = "totalBlur"/>
 		<span>条</span>
 		<span>|</span>
-		<a href="javascript:;" @click="start">首页</a>
+		<a href="javascript:;" @click="start" :class="{operability:startClass}">首页</a>
 		<span>|</span>
-		<a href="javascript:;" @click="prev">上一页 </a>
+		<a href="javascript:;" @click="prev" :class="{operability:prevClass}">上一页 </a>
 		<span>|</span>
-		<a href="javascript:;" @click="next">下一页</a>
+		<a href="javascript:;" @click="next" :class="{operability:nextClass}">下一页</a>
 		<span>|</span>
-		<a href="javascript:;" @click="end">尾页</a>
+		<a href="javascript:;" @click="end" :class="{operability:endClass}">尾页</a>
 		<span>|</span>
 		<span>跳到第</span>
-		<input class="input" type="text" value="1" />
+		<input class="input" type="text" v-model="gopage" @blur = "pageBlur"/>
 		<span>页</span>
 	</div>
 </template>
@@ -45,32 +45,70 @@
         computed:{
 			allPages(){
 				let num = Math.ceil(this.total/this.pageSize);
+                this.startClass = false;
+                this.prevClass = false;
+                this.nextClass = false;
+                this.endClass = false;
+                if(num>1){
+                    if(this.currentPage > 1){
+                        this.startClass = true;
+                        this.prevClass = true;
+                    }
+                    if(num > this.currentPage){
+                        this.nextClass = true;
+                        this.endClass = true;
+                    }
+                }
 				return num;
 			}
 		},
 		data() {
 			return {
 				currentPage:this.current,
-				currentPageSize:this.pageSize
+				currentPageSize:this.pageSize,
+                startClass:false,
+                prevClass:false,
+                nextClass:true,
+                endClass:true,
+                gopage:1
 			}
 		},
         methods:{
             changePage (page) {
+                this.startClass = false;
+                this.prevClass = false;
+                this.nextClass = false;
+                this.endClass = false;
+                if(this.allPages>1){
+                    if(page > 1){
+                        this.startClass = true;
+                        this.prevClass = true;
+                    }
+                    if(this.allPages > page){
+                        this.nextClass = true;
+                        this.endClass = true;
+                    }
+                }
+
                 if (this.currentPage != page) {
                     this.currentPage = page;
                     this.$emit('on-change', page);
-                    console.log("页面发生了改变")
                 }
             },
             prev () {
+                if(!this.prevClass){
+                    return false;
+                }
                 const current = this.currentPage;
                 if (current <= 1) {
                     return false;
                 }
                 this.changePage(current - 1);
-                console.log("1111111")
             },
             next () {
+                if(!this.nextClass){
+                    return false;
+                }
                 const current = this.currentPage;
                 if (current >= this.allPages) {
                     return false;
@@ -78,11 +116,24 @@
                 this.changePage(current + 1);
             },
             start () {
+                if(!this.startClass) {
+                    return false;
+                }
             	this.changePage(1);
             },
             end () {
+                if(!this.endClass){
+                    return false;
+                }
             	this.changePage(this.allPages);
+            },
+            totalBlur(){
+                console.log( this.currentPageSize )
+            },
+            pageBlur(){
+                console.log( this.gopage )
             }
+
         }
     };	
 </script>

@@ -1,4 +1,4 @@
-.jnq-alert-mask {
+.jnq-modal-mask {
   position: fixed;
   top: 0;
   bottom: 0;
@@ -8,7 +8,7 @@
   height: 100%;
   z-index: 1000;
 }
-.jnq-alert {
+.jnq-modal {
   z-index: 9999;
   position: fixed;
   background: #fff;
@@ -18,7 +18,7 @@
   overflow: hidden;
   box-shadow: 0 3px 20px rgba(0, 0, 0, 0.9);
 }
-.jnq-alert-h {
+.jnq-modal-h {
   width: 100%;
   height: 32px;
   background: #1b6aaa;
@@ -26,7 +26,7 @@
   left: 0;
   top: 0;
 }
-.jnq-alert-h h3 {
+.jnq-modal-h h3 {
   width: 100%;
   height: 100%;
   color: #fff;
@@ -36,31 +36,32 @@
   cursor: move;
   font-size: 20px;
 }
-.jnq-alert-h button {
-  width: 32px;
-  height: 32px;
+.jnq-modal-h button {
+  width: 21px;
+  height: 21px;
+  line-height: 19px;
   position: absolute;
-  top: 0;
-  right: 0;
-  border: none;
-  background-color: #1b6aaa;
-  color: #fff;
-  z-index: 2;
+  right: 10px;
+  top: 5px;
+  color: #000;
+  border-radius: 15px;
   cursor: pointer;
+  border: 0;
+  outline: 0;
 }
-.jnq-alert-c {
+.jnq-modal-c {
   width: 100%;
-  padding: 20px;
+  padding: 12px;
   box-sizing: border-box;
 }
-.jnq-alert-c .jnq-alert-message {
+.jnq-modal-c .jnq-modal-message {
   height: 52px;
   line-height: 52px;
 }
-.jnq-alert-f {
+.jnq-modal-f {
   width: 100%;
 }
-.jnq-alert-f button {
+.jnq-modal-f button {
   padding: 6px 12px;
   margin: 4px 20px;
   border: none;

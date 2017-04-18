@@ -2,13 +2,23 @@
 @Alert-head:32px;
 @Alert-foot:50px;
 @bg-color:#1b6aaa;
+.jnq-alert-mask{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(55,55,55,.6);
+    height: 100%;
+    z-index: 1000;
+}
 
 .jnq-alert{
-    z-index: 999;
+    z-index: 9999;
     position: fixed;
     background: #fff;
     top: 40%;
-    left: 40%;
+    left: 50%;
     border-radius: 10px;
     overflow:hidden;
     box-shadow: 0 3px 20px rgba(0, 0, 0, .9);

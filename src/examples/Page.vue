@@ -1,6 +1,10 @@
 <template>
 	<div class="hello">
-		<Page :current="current" :total="total"></Page>	
+		<Page 
+		:current="current" 
+		:total="total"
+		@on-change = "change"
+		></Page>	
 	</div>
 	
 </template>
@@ -17,7 +21,9 @@
 		},
 		components: {Page},
 		methods:{
-	       
+	       change(page){
+			   console.log("页面发生了改变page=" + page);
+		   }
         }
 	}
 </script>

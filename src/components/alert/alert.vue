@@ -1,21 +1,24 @@
 <template>
-	<div class="jnq-alert" :class="[classes]" :style="styles"  ref="box">
-		<div class="jnq-alert-h" @mousedown="mDown" >
-			<slot name="header">
-				<h3>{{title}}</h3>
-				<button @click="closeHandle">X</button>
-			</slot>
-		</div>
-		<div class="jnq-alert-c">
-			<slot name="content">
-				<p class="jnq-alert-message">{{content}}</p>
-			</slot>
-		</div>
-		<div class="jnq-alert-f">
-			<slot name="footer">
-				<button @click="okBtn">{{okText}}</button>	
-				<button @click="closeBtn">{{cancelText}}</button>
-			</slot>
+	<div>
+		<div v-if = "maskClosable" class="jnq-alert-mask"></div>
+		<div class="jnq-alert" :class="[classes]" :style="styles"  ref="box">
+			<div class="jnq-alert-h" @mousedown="mDown" >
+				<slot name="header">
+					<h3>{{title}}</h3>
+					<button @click="closeHandle">X</button>
+				</slot>
+			</div>
+			<div class="jnq-alert-c">
+				<slot name="content">
+					<p class="jnq-alert-message">{{content}}</p>
+				</slot>
+			</div>
+			<div class="jnq-alert-f">
+				<slot name="footer">
+					<button @click="okBtn">{{okText}}</button>	
+					<button @click="closeBtn">{{cancelText}}</button>
+				</slot>
+			</div>
 		</div>
 	</div>
 </template>
@@ -56,7 +59,12 @@
 				type:Boolean,
 				default:false
 			},
-			style:String
+			style:String,
+			//是否允许点击遮罩层关闭
+			maskClosable:{
+				type:Boolean,
+				default:true
+			}
         },
         computed:{
 			classes(){
@@ -67,6 +75,7 @@
 			},
 			styles(){
 				let style = {};
+				style.marginLeft = `${-this.width/2}px`;
                 // if (this.height) {
                 //     const height = (this.isLeftFixed || this.isRightFixed) ? parseInt(this.height) + this.scrollBarWidth : parseInt(this.height);
                 //     style.height = `${height}px`;
@@ -92,8 +101,9 @@
 				let disX = e.offsetX;
 				let disY = e.offsetY;
 				let oBox = this.$refs.box;
+				let self = this;
 				document.onmousemove = function(e){
-					oBox.style.left = e.clientX - disX + "px";
+					oBox.style.left = e.clientX - disX + self.width/2 + "px";
 					oBox.style.top = e.clientY - disY + "px";
 				}
 				document.onmouseup = function(){

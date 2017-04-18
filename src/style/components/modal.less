@@ -1,33 +1,82 @@
-p,h4{
-    margin:0;
+// @modal-w: 300px;
+@modal-head:32px;
+@modal-foot:50px;
+@bg-color:#1b6aaa;
+.jnq-modal-mask{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(55,55,55,.6);
+    height: 100%;
+    z-index: 1000;
 }
-.modal{
-    width: 500px;
-    background-color: #fff;
-    border: 1px solid rgba(0,0,0,.2);
-    border-radius: 6px;
-    box-shadow: 0 3px 9px rgba(0,0,0,.5);
 
+.jnq-modal{
+    z-index: 9999;
+    position: fixed;
+    background: #fff;
+    top: 40%;
+    left: 50%;
+    border-radius: 10px;
+    overflow:hidden;
+    box-shadow: 0 3px 20px rgba(0, 0, 0, .9);
 }
-.modal-header {
-    padding: 15px;
-    border-bottom: 1px solid #e5e5e5;
+
+.jnq-modal-h{
+    width: 100%;
+    height: @modal-head;
+    background: @bg-color;
+    position: relative;
+    left: 0;
+    top: 0;
+    h3{
+        width: 100%;
+        height: 100%;
+        color: #fff;
+        line-height: @modal-head;
+        text-align: left;
+        padding-left: 10px;
+        cursor: move;
+        font-size: 20px;
+        
+    }
+    button{
+        width: 21px;
+        height: 21px;
+        line-height: 19px;
+        position: absolute;
+        right: 10px;
+        top: 5px;
+        color: #000;
+        border-radius: 15px;
+        cursor: pointer;
+        border: 0;
+        outline: 0;
+    }
 }
-.modal-content div {
-    padding: 20px;
+
+.jnq-modal-c{
+    width: 100%;
+    padding: 12px;
+    box-sizing: border-box;
+    .jnq-modal-message{
+        height: 52px;
+        line-height: 52px;
+    }
 }
-.modal-footer {
-    padding: 15px;
-    text-align: right;
-    border-top: 1px solid #e5e5e5;
+
+.jnq-modal-f{
+    width: 100%;
+    // text-align: right;
+    button{
+        padding: 6px 12px;
+        margin: 4px 20px;
+        border: none;
+        color: #fff;
+        border-radius: 2px;
+        background: @bg-color;
+        font-size: 12px;
+    }
 }
-.btn {
-    padding: 5px 15px;
-    border: none;
-    outline: none;
-}
-.blue {
-    color: #fff;
-    background-color: #39f;
-    border-color: #39f;
-}	

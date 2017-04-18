@@ -15,6 +15,7 @@
 			:content="ms"
 			:title = "title1"
 			:width = "width1"
+			:okText = "okText1"
 		>
 			<table slot = "content" class="exa-tlert">
 				<thead>
@@ -71,7 +72,8 @@
 			return {
 				ms:"请先选中一份合同",
 				title1:"新增其他应收款",
-				width1:"500"
+				width1:"500",
+				okText1:"保存"
 			}
 		},
 		components: {Alert},
